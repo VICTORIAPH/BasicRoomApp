@@ -9,7 +9,7 @@ import androidx.room.OnConflictStrategy
 @Dao
 interface UserDao {
     @Query("SELECT * FROM $TABLE_USERS")
-    fun getUserFromDatabase(): List<UserEntity>
+    fun getUsersFromDatabase(): List<UserEntity>
 
     @Query("SELECT * FROM $TABLE_USERS  WHERE user_id = :uuid" )
     fun getUserByUuid(uuid: String): UserEntity

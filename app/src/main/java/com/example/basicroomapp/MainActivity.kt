@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import com.example.basicroomapp.database.MainViewModel
 import com.example.basicroomapp.database.User
 
 class MainActivity : AppCompatActivity() {
@@ -12,33 +11,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //llamamos el metodo saveUser para ingresar un usuario
+        mainViewModel.saveUser(User(
+            "User0002",
+            "Name0002",
+            1.64,
+            64.3,
+            "pedro@gmail.com",
+            "password0002"
+        ))
 
-        mainViewModel.saveUser(
-            User(
-                user_id = "user0005",
-                user_name = "Victoria5",
-                user_height = 1.91,
-                user_weight = 59.4,
-                user_email = "vicky454ph@gmail.com22",
-                user_pass = "passnumvictoria"
-            )
-        )
+        mainViewModel.getUsers()
+        mainViewModel.savedUsers.observe(this,{usersList ->
+            if (!usersList.isNullOrEmpty()){
+                for(user in usersList){
+                    Log.d("user", user.user_email)
+                }
 
-     mainViewModel.getUsers()
+            }else{
+                Log.d("user", "null or empty")
+            }
+        })
 
-         //si es en un fragmen reemplazar el this por: viewLifecycleOwer
-     mainViewModel.savedUsers.observe(this,  { usersList ->
-         if (!usersList.isNullOrEmpty()){
-             for(user in usersList){
-                 Log.d("usuarios", user.user_name)}
-         }else{
-             Log.d("usuarios", "null or empty")
-         }
-     })
-
+    }
 }
-}
-
-
-
-

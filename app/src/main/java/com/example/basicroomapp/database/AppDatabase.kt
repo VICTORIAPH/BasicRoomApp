@@ -8,7 +8,7 @@ const val TABLE_USERS = "users"
 const val DATABASE_NAME = "appdatabase.sqlite"
 
 @Database(entities = [UserEntity::class],
-    version = 1
+    version = DATABASE_VERSION
     )
 abstract class AppDatabase : RoomDatabase(){
     abstract fun userDao(): UserDao

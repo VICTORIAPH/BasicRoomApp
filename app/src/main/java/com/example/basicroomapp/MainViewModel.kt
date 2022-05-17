@@ -7,7 +7,7 @@ import com.example.basicroomapp.database.DatabaseManager
 import com.example.basicroomapp.database.MyCoroutines
 import com.example.basicroomapp.database.User
 import kotlinx.coroutines.launch
-
+//esta clase va fuera de dataBase
 class MainViewModel: ViewModel() {fun saveUser(user: User) {
     viewModelScope.launch {
         val userDao = DatabaseManager.instance.database.userDao()

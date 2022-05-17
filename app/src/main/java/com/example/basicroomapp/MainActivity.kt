@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         ))
 
         mainViewModel.getUsers()
+        //manejo de errores
         mainViewModel.savedUsers.observe(this,{usersList ->
             if (!usersList.isNullOrEmpty()){
                 for(user in usersList){
